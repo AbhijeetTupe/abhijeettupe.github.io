@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijeet Tupe - Web Developer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- OPTIMIZED CSS LOAD - Desktop first, mobile conditional -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 768px)">
+    
+    <!-- Font Awesome - Critical only -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- EmailJS - Load async -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+</head>
+<script>
+const text1 = "Hi, I'm";
+const text2 = "ABHIJEET TUPE";
+
+let i = 0;
+let j = 0;
+const speed = 100;
+
+function typeLine1() {
+    if (i < text1.length) {
+        document.querySelector("h1").childNodes[0].nodeValue += text1.charAt(i);
+        i++;
+        setTimeout(typeLine1, speed);
+    } else {
+        typeLine2();
+    }
+}
+
+function typeLine2() {
+    if (j < text2.length) {
+        document.getElementById("typewriter").innerHTML += text2.charAt(j);
+        j++;
+        setTimeout(typeLine2, speed);
+    }
+}
+
+// Clear existing text first
+window.onload = function () {
+    document.querySelector("h1").childNodes[0].nodeValue = "";
+    document.getElementById("typewriter").innerHTML = "";
+    typeLine1();
+};
+</script>
+<style>
+    .menu-toggle { display: none !important; }
+    @media (max-width: 768px) { .menu-toggle { display: flex !important; } }
+</style>
+<body data-theme="dark">
+    <!-- Navbar WITH MOBILE HAMBURGER -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">AT</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <!--  HAMBURGER - MOBILE ONLY -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!--  Theme toggle - shows on both desktop/mobile -->
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                 <h1>Hi, I'm<br/> <span class="highlight" id="typewriter">Abhijeet Tupe</span></h1>
+                <div class="title">Web Developer</div>
+                <p class="tagline">I build modern, responsive, and user-friendly websites, turning ideas into interactive digital experiences focused on performance and usability.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Hire Me
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                         View Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="photo.png" alt="Abhijeet Tupe" class="profile-img">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">About Me</h2>
+                <p>I'm a passionate Web Developer with a background in B.Tech (Electronics & Telecommunication). I love transforming ideas into beautiful, functional websites that provide exceptional user experiences.</p>
+                <p>Currently focused on mastering modern web technologies and creating responsive, user-friendly applications. Always eager to learn new technologies and tackle challenging projects.</p>
+                <a href="resume.pdf" download="Abhijeet-Tupe-Resume.pdf" class="btn btn-primary resume-btn">
+                    <i class="fas fa-download"></i>Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-hero-section">
+        <div class="skills-container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <h3>HTML5</h3>
+                    <p>Semantic markup</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                    <h3>CSS3</h3>
+                    <p>Advanced styling with Flexbox, Grid & Animations</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                    <h3>JavaScript</h3>
+                    <p>Interactive features and dynamic content</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-react"></i></div>
+                    <h3>React</h3>
+                    <p>Building modern, component-based UIs</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                    <h3>Git & GitHub</h3>
+                    <p>Version control and collaboration</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Responsive Design</h3>
+                    <p>Mobile-first approach for all devices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-laptop-code"></i></div>
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>A modern, responsive portfolio showcasing web development skills with dark/light mode toggle and smooth animations.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Live Demo</a>
+                        <a href="#" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">View Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-calculator"></i></div>
+                <div class="project-content">
+                    <h3>Advanced Calculator</h3>
+                    <p>Responsive calculator website with scientific functions, memory, history, dark/light mode, and smooth animations.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Live Demo</a>
+                        <a href="#" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">View Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-broadcast-tower"></i></div>
+                <div class="project-content">
+                    <h3>Bluetooth LED Cricket Scoreboard</h3>
+                    <p>Final Year Project: Wireless LED scoreboard controlled via Bluetooth. Real-time cricket score updates using Arduino & custom app.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Live Demo</a>
+                        <a href="Publication.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">View Publication</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>B.Tech Electronics & Telecommunication <span style="color: #4f46e5; font-weight: 600;">(Honors in Cybersecurity)</span></h3>
+                        <div class="date">2020 - 2024</div>
+                        <ul style="margin-top: 0.8rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.7;">
+                            <li>Specialized in Satellite Communication Systems</li>
+                            <li>RF Engineering, Antenna Design & Wireless Communication</li>
+                            <li>Final Year Project: Bluetooth LED Cricket Scoreboard</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>RPA Intern</h3>
+                        <div class="date">Oct - Dec 2021</div>
+                        <ul style="margin-top: 0.8rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.7;">
+                            <li>Learned Robotic Process Automation basics</li>
+                            <li>Worked with UiPath for process automation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Cybersecurity Intern</h3>
+                        <div class="date">Dec 2022 - Feb 2023</div>
+                        <ul style="margin-top: 0.8rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.7;">
+                            <li>Network security fundamentals & vulnerability scanning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Full Stack Developer</h3>
+                        <div class="date">From 2024 - Present</div>
+                        <ul style="margin-top: 0.8rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.7;">
+                            <li>Developing responsive websites & web applications</li>
+                            <li>Mastering React, Node.js, MongoDB</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -  EmailJS READY -->
+    <section id="contact" class="section">
+        <div class="contact-form-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-text">Ready to bring your ideas to life? Let's work together!</p>
+            
+            <form class="contact-form" id="emailjsForm">
+                <div class="form-group">
+                    <input type="text" id="userName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group phone-group">
+                    <span class="country-code">+91</span>
+                    <input type="tel" id="userPhone" placeholder="Enter 10-digit number" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="userEmail" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="userSubject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="userMessage" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+                <div id="formStatus" style="margin-top:16px; font-size:14px;"></div>
+            </form>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-links" style="text-align: center; margin-top: 2rem;">
+            <a href="www.linkedin.com/in/abhijeet-tupe-787126288" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/abhijeet-tu" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:abhijeettupe308@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Abhijeet Tupe. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for the web.</p>
+    </footer>
+
+    <!--  COMPLETE SCRIPT with MOBILE MENU + EmailJS -->
+    <script>
+        //  1. MOBILE HAMBURGER MENU
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                });
+                
+                // Close menu when clicking link
+                const navLinksA = navLinks.querySelectorAll('a');
+                navLinksA.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    });
+                });
+                
+                // Close menu on outside click
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // 2. Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            themeToggle.querySelector('i').className = document.body.dataset.theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+
+        // 3. Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // 4. Smooth Scroll for Nav Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // 5.  EMAILJS INITIALIZATION & FORM HANDLER
+        document.addEventListener('DOMContentLoaded', function() {
+            const EMAILJS_CONFIG = {
+                publicKey: '9exlwLvbsqXjS5gpm',
+                serviceId: 'service_e6zfgot',
+                templateId: 'template_kcnewc2'
+            };
+
+            // Initialize EmailJS
+            emailjs.init(EMAILJS_CONFIG.publicKey);
+
+            // Form submit handler
+            document.getElementById('emailjsForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('submitBtn');
+                const statusDiv = document.getElementById('formStatus');
+                
+                // Loading state
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                statusDiv.innerHTML = '';
+                
+                // Form data
+                const formData = {
+                    from_name: document.getElementById('userName').value,
+                    from_phone: document.getElementById('userPhone').value,
+                    from_email: document.getElementById('userEmail').value,
+                    subject: document.getElementById('userSubject').value,
+                    message: document.getElementById('userMessage').value,
+                    date: new Date().toLocaleString()
+                };
+                
+                // Send via EmailJS
+                emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, formData)
+                    .then((result) => {
+                        statusDiv.innerHTML = '<div style="color:#10b981; padding:12px; background:rgba(16,185,129,0.1); border-radius:8px; border-left:4px solid #10b981;">✅ Message sent successfully! I\'ll reply within 24 hours.</div>';
+                        this.reset();
+                    })
+                    .catch((error) => {
+                        statusDiv.innerHTML = '<div style="color:#ef4444; padding:12px; background:rgba(239,68,68,0.1); border-radius:8px; border-left:4px solid #ef4444;">❌ Failed to send. Please email me directly.</div>';
+                        console.error('EmailJS Error:', error);
+                    })
+                    .finally(() => {
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                        submitBtn.disabled = false;
+                    });
+            });
+        });
+
+        // 6. Service Worker Cleanup
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(reg => reg.unregister()));
+        }
+    </script>
+</body>
+</html>
+
