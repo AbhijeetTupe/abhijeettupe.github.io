@@ -377,13 +377,15 @@ body {
     gap: 0.5rem !important;
     width: auto !important;
     max-width: 260px !important;
-
     justify-content: center !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
-
-    margin: 1.5rem auto 0 auto !important; /* 🔥 PERFECT CENTER */
+    margin-left: -10px !important;          /* 🔥 SHIFT LEFT */
+    margin-right: auto !important;
+    margin-top: 1.5rem !important;
+    text-align: center;
 }
+
 /* 🔥 FORCE BUTTONS SMALL & SIDE-BY-SIDE */
 .cta-buttons .btn {
     flex: 1 !important;           /* 🔥 EQUAL WIDTH */
