@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden; 
 }
 
 :root {
@@ -381,6 +380,7 @@ body {
     justify-content: center !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
+
     margin-right: auto !important;
     margin-top: 1.5rem !important;
 }
