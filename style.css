@@ -340,12 +340,12 @@ body {
 }
 
 .country-code {
-    padding: 0.9rem 0.8rem;
-    border: 1.5px solid var(--border-color);
-    border-radius: 10px;
+    padding: 0.7rem 0.6rem;
+    border: 1.3px solid var(--border-color);
+    border-radius: 8px;
     background: rgba(255,255,255,0.1);
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 
 .phone-group input {
@@ -662,14 +662,19 @@ body {
     margin: 0 auto;
     padding: 0 1rem;
     box-sizing: border-box;
+    
 }
 
 .contact-form {
     background: var(--card-bg);
     backdrop-filter: blur(8px);
-    padding: 2rem;
-    border-radius: 18px;
-    border: 1px solid var(--border-color);
+
+    padding: 1.2rem;          /* reduced from 2rem */
+    border-radius: 14px;      /* slightly smaller */
+    max-width: 420px;         /* controls overall size */
+    margin: 0 auto;           /* center it */
+
+    border: 2px solid rgba(0, 0, 0, 0.5);
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -681,6 +686,9 @@ body {
 
 .form-group {
     margin-bottom: 1.2rem;
+    padding: 0rem;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
 }
 
 .form-group input,
@@ -827,12 +835,14 @@ body {
         0 8px 32px rgba(102, 126, 234, 0.3),
         0 4px 16px rgba(0, 0, 0, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.3);
+    
 }
 
 .resume-btn {
-    margin: 3rem auto 0;
+    margin: 2rem auto 0;
     display: block;
-    max-width: 250px;
+    max-width: 200px;
+    text-align: center;
 }
 
 .btn-primary:hover {
