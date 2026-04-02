@@ -18,12 +18,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 </head>
 <script>
-const text1 = "Hi, I'm";
+const text1 = "Hi, I'm ";
 const text2 = "ABHIJEET TUPE";
+
+
 
 let i = 0;
 let j = 0;
 const speed = 100;
+const delayBetweenLoops = 5000; // 5 seconds
 
 function typeLine1() {
     if (i < text1.length) {
@@ -40,14 +43,23 @@ function typeLine2() {
         document.getElementById("typewriter").innerHTML += text2.charAt(j);
         j++;
         setTimeout(typeLine2, speed);
+    } else {
+        setTimeout(resetAnimation, delayBetweenLoops); // wait 32 sec
     }
 }
 
-// Clear existing text first
-window.onload = function () {
+function resetAnimation() {
+    i = 0;
+    j = 0;
+
     document.querySelector("h1").childNodes[0].nodeValue = "";
     document.getElementById("typewriter").innerHTML = "";
+
     typeLine1();
+}
+
+window.onload = function () {
+    resetAnimation();
 };
 </script>
 <style>
@@ -108,7 +120,7 @@ window.onload = function () {
                 <p>I'm a passionate Web Developer with a background in B.Tech (Electronics & Telecommunication). I love transforming ideas into beautiful, functional websites that provide exceptional user experiences.</p>
                 <p>Currently focused on mastering modern web technologies and creating responsive, user-friendly applications. Always eager to learn new technologies and tackle challenging projects.</p>
                 <a href="resume.pdf" download="Abhijeet-Tupe-Resume.pdf" class="btn btn-primary resume-btn">
-                    <i class="fas fa-download"></i>Download Resume
+                    <i class="fas fa-download"></i> Resume
                 </a>
             </div>
         </div>
@@ -162,10 +174,14 @@ window.onload = function () {
                 <div class="project-content">
                     <h3>Portfolio Website</h3>
                     <p>A modern, responsive portfolio showcasing web development skills with dark/light mode toggle and smooth animations.</p>
-                    <div style="display: flex; gap: 1rem;">
-                        <a href="#" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Live Demo</a>
-                        <a href="#" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">View Code</a>
-                    </div>
+                    <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                         View Demo
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                         View Code
+                    </a>
+                </div>
                 </div>
             </div>
             <div class="project-card">
@@ -173,10 +189,14 @@ window.onload = function () {
                 <div class="project-content">
                     <h3>Advanced Calculator</h3>
                     <p>Responsive calculator website with scientific functions, memory, history, dark/light mode, and smooth animations.</p>
-                    <div style="display: flex; gap: 1rem;">
-                        <a href="#" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Live Demo</a>
-                        <a href="#" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">View Code</a>
-                    </div>
+                    <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class=""></i> View Code
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                         View Code
+                    </a>
+                </div>
                 </div>
             </div>
             <div class="project-card">
@@ -184,10 +204,14 @@ window.onload = function () {
                 <div class="project-content">
                     <h3>Bluetooth LED Cricket Scoreboard</h3>
                     <p>Final Year Project: Wireless LED scoreboard controlled via Bluetooth. Real-time cricket score updates using Arduino & custom app.</p>
-                    <div style="display: flex; gap: 1rem;">
-                        <a href="#" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">Live Demo</a>
-                        <a href="Publication.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">View Publication</a>
-                    </div>
+                    <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class=""></i> View Code
+                    </a>
+                    <a href="Publication.pdf" class="btn btn-secondary">
+                         View File
+                    </a>
+                </div>
                 </div>
             </div>
         </div>
@@ -246,7 +270,7 @@ window.onload = function () {
     <section id="contact" class="section">
         <div class="contact-form-container">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="contact-text">Ready to bring your ideas to life? Let's work together!</p>
+            <p class="contact-text">Ready to bring your ideas to life? Let's work together!</p><br/>
             
             <form class="contact-form" id="emailjsForm">
                 <div class="form-group">
@@ -288,8 +312,8 @@ window.onload = function () {
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Abhijeet Tupe. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for the web.</p>
-    </footer>
+    <p>&copy; 2026 Abhijeet Tupe. Designed & Developed by me.</p>
+</footer>
 
     <!--  COMPLETE SCRIPT with MOBILE MENU + EmailJS -->
     <script>
