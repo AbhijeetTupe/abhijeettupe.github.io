@@ -43,29 +43,19 @@ body {
     touch-action: manipulation;
 }
 
-/* 🔥 NO ZOOM + NO SHAKE NAVBAR */
 .navbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100vw !important;              /* 🔥 FULL WIDTH */
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    padding: 0.35rem 0.65rem;
-    box-shadow: var(--shadow);
-    z-index: 1000 !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid var(--border-color);
-    /* 🔥 ANTI-ZOOM + ANTI-SHAKE */
-    transform: translateZ(0) !important;
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
-    perspective: 1000px !important;
-    will-change: transform !important;
-    contain: layout style !important;
+    box-shadow: var(--shadow);
 }
-
 [data-theme="dark"] .navbar {
     background: rgba(15, 15, 35, 0.98);
 }
@@ -318,14 +308,12 @@ body {
         font-size: 0.9rem;
     }
 }
-
-
 /* 🔥 HERO SECTION - PERFECT CENTERED (UPDATED) */
 /* 🔥 NO BG SHAKE */
 .hero {
     min-height: 85dvh;
     padding: 4.5rem 0.9rem 1.8rem;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('Images/bg.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('bg.jpg');
     background-size: cover !important;
     background-position: center !important;
     background-attachment: scroll !important;  /* 🔥 FIXED */
@@ -529,12 +517,32 @@ body {
     box-shadow: var(--shadow);
 }
 
+.country-code {
+    padding: 0.7rem 0.6rem;
+    border: 1.3px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+}
+
 .contact-form {
     background: var(--card-bg);
     padding: 1.3rem 1.2rem;
     border-radius: 16px;
     box-shadow: var(--shadow);
     width: 100%;
+}
+
+.phone-group {
+    display: flex;
+    align-items: center;
+}
+.phone-group .country-code {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+
+    transform: translateY(-5px); /* slightly above */
 }
 
 .form-group input,
@@ -546,6 +554,8 @@ body {
     background: rgba(255,255,255,0.9);
     margin-bottom: 0.7rem;
     font-size: 13.5px;
+    color: #000;
+    
 }
 
 .social-links {
