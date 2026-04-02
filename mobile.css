@@ -395,6 +395,7 @@ body {
     height: 38px !important;
     margin: 0 !important;
     white-space: nowrap !important;  /* 🔥 NO TEXT WRAP */
+    align-items: center;
     flex-shrink: 0 !important;
 }
 
