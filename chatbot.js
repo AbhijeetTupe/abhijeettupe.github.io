@@ -1,17 +1,5 @@
-// PERFECTLY SIZED RESPONSIVE CHATBOT
-// Add this CSS immediately after creating chatWindow
-const style = document.createElement('style');
-style.textContent = `
-    html, body {
-        overscroll-behavior-y: none;
-        touch-action: pan-x pan-y;
-    }
-    .chat-container * {
-        overscroll-behavior: contain;
-    }
-`;
-document.head.appendChild(style);
 
+// PERFECTLY SIZED RESPONSIVE CHATBOT - FIXED VERSION
 (function() {
     'use strict';
 
@@ -27,6 +15,25 @@ document.head.appendChild(style);
         const accentColor = '#6366f1';
         const lightBg = '#f8fafc';
         const darkText = '#1e293b';
+
+        // ================= ANTI-REFRESH CSS INJECTION =================
+        const antiRefreshStyle = document.createElement('style');
+        antiRefreshStyle.textContent = `
+            html, body {
+                overscroll-behavior-y: none;
+                touch-action: pan-x pan-y;
+                -webkit-overflow-scrolling: touch;
+            }
+            .chatbot-container *,
+            #chatWindow {
+                overscroll-behavior: contain;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(antiRefreshStyle);
 
         // ================= COMPACT FAB BUTTON =================
         const chatBtn = document.createElement('button');
@@ -69,6 +76,8 @@ document.head.appendChild(style);
 
         // ================= PROFESSIONAL CHAT WINDOW =================
         const chatWindow = document.createElement('div');
+        chatWindow.id = 'chatWindow';
+        chatWindow.className = 'chatbot-container';
         chatWindow.innerHTML = `
             <div style="
                 padding:${isMobile ? '16px 18px' : '20px 24px'};
@@ -109,6 +118,7 @@ document.head.appendChild(style);
                 padding:${isMobile ? '16px 18px' : '24px 20px'};
                 font-family:'Inter',-apple-system,system-ui,sans-serif;
                 ${isMobile ? 'min-height:200px;' : 'min-height:280px;'}
+                overscroll-behavior: contain;
             "></div>
 
             <div style="
@@ -141,26 +151,45 @@ document.head.appendChild(style);
             </div>
         `;
 
-        // RIGHT SIDE + VERTICALLY CENTERED FOR DESKTOP
-chatWindow.style.cssText = `
-    position:fixed;display:none;flex-direction:column;
-    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
-    font-family:'Inter',-apple-system,system-ui,sans-serif;
-    z-index:100000;
-    ${isMobile ? `
-        left:16px;right:16px;bottom:16px;top:90px;
-        width:auto;height:auto;max-height:calc(100vh - 106px);
-        max-width:calc(100vw - 32px);
-    ` : isTablet ? `
-        left:24px;right:24px;bottom:90px;top:70px;
-        width:auto;height:auto;max-height:calc(100vh - 160px);
-        max-width:calc(100vw - 48px);width:420px;height:520px;
-    ` : `
-        right:40px;top:55%;transform:translateY(-50%);
-        width:440px;height:540px;
-    `}
-    max-width:95vw;max-height:90vh;
-`;
+        // DYNAMIC POSITIONING FUNCTION
+        function updateChatPosition() {
+            const currentIsMobile = window.innerWidth <= 768;
+            const currentIsTablet = window.innerWidth <= 1024;
+            
+            if (currentIsMobile) {
+                chatWindow.style.cssText = `
+                    position:fixed;display:flex;flex-direction:column;
+                    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
+                    font-family:'Inter',-apple-system,system-ui,sans-serif;
+                    z-index:100000;
+                    left:16px;right:16px;bottom:16px;top:90px;
+                    width:auto;height:auto;max-height:calc(100vh - 106px);
+                    max-width:calc(100vw - 32px);
+                `;
+            } else if (currentIsTablet) {
+                chatWindow.style.cssText = `
+                    position:fixed;display:flex;flex-direction:column;
+                    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
+                    font-family:'Inter',-apple-system,system-ui,sans-serif;
+                    z-index:100000;
+                    left:24px;right:24px;bottom:90px;top:70px;
+                    width:auto;height:auto;max-height:calc(100vh - 160px);
+                    max-width:calc(100vw - 48px);width:420px;height:520px;
+                `;
+            } else {
+                chatWindow.style.cssText = `
+                    position:fixed;display:flex;flex-direction:column;
+                    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
+                    font-family:'Inter',-apple-system,system-ui,sans-serif;
+                    z-index:100000;
+                    right:40px;top:55%;transform:translateY(-50%);
+                    width:440px;height:540px;
+                `;
+            }
+        }
+
+        // Initial positioning
+        updateChatPosition();
 
         document.body.appendChild(chatBtn);
         document.body.appendChild(chatWindow);
@@ -201,6 +230,13 @@ chatWindow.style.cssText = `
                 btn.style.boxShadow = '0 4px 16px rgba(15,15,35,0.3)';
             };
         });
+
+        // ================= PULL-TO-REFRESH PREVENTION =================
+        document.addEventListener('touchmove', (e) => {
+            if (window.scrollY <= 0 && e.touches[0].clientY > 20) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         // ================= ENHANCED STATUS BAR =================
         function getCurrentTime() {
@@ -379,26 +415,13 @@ chatWindow.style.cssText = `
             addMessage("Technical Assistant online. How may I assist?", false, true);
         }, 300);
 
-        // FIXED Resize handler - NO MORE RELOADS!
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        // Reposition only, smooth scrolling preserved ✅
-        const rects = chatWindow.getBoundingClientRect();
-        chatWindow.style.transition = 'all 0.3s ease';
-        
-        // Your existing positioning logic here (mobile/tablet/desktop)
-        // ... (copy the positioning code from above)
-    }, 100);
-});
+        // Resize handler
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => location.reload(), 250);
+        });
 
-// Prevent pull-to-refresh globally
-document.addEventListener('touchmove', (e) => {
-    if (window.scrollY <= 0 && e.touches[0].clientY > 20) {
-        e.preventDefault();
-    }
-}, { passive: false });
     }, 200);
 })();
 
