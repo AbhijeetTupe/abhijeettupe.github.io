@@ -1,5 +1,5 @@
+// PERFECTLY SIZED RESPONSIVE CHATBOT
 
-// PERFECTLY SIZED RESPONSIVE CHATBOT - FIXED VERSION
 (function() {
     'use strict';
 
@@ -15,25 +15,6 @@
         const accentColor = '#6366f1';
         const lightBg = '#f8fafc';
         const darkText = '#1e293b';
-
-        // ================= ANTI-REFRESH CSS INJECTION =================
-        const antiRefreshStyle = document.createElement('style');
-        antiRefreshStyle.textContent = `
-            html, body {
-                overscroll-behavior-y: none;
-                touch-action: pan-x pan-y;
-                -webkit-overflow-scrolling: touch;
-            }
-            .chatbot-container *,
-            #chatWindow {
-                overscroll-behavior: contain;
-            }
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(antiRefreshStyle);
 
         // ================= COMPACT FAB BUTTON =================
         const chatBtn = document.createElement('button');
@@ -76,8 +57,6 @@
 
         // ================= PROFESSIONAL CHAT WINDOW =================
         const chatWindow = document.createElement('div');
-        chatWindow.id = 'chatWindow';
-        chatWindow.className = 'chatbot-container';
         chatWindow.innerHTML = `
             <div style="
                 padding:${isMobile ? '16px 18px' : '20px 24px'};
@@ -118,7 +97,6 @@
                 padding:${isMobile ? '16px 18px' : '24px 20px'};
                 font-family:'Inter',-apple-system,system-ui,sans-serif;
                 ${isMobile ? 'min-height:200px;' : 'min-height:280px;'}
-                overscroll-behavior: contain;
             "></div>
 
             <div style="
@@ -151,45 +129,26 @@
             </div>
         `;
 
-        // DYNAMIC POSITIONING FUNCTION
-        function updateChatPosition() {
-            const currentIsMobile = window.innerWidth <= 768;
-            const currentIsTablet = window.innerWidth <= 1024;
-            
-            if (currentIsMobile) {
-                chatWindow.style.cssText = `
-                    position:fixed;display:flex;flex-direction:column;
-                    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
-                    font-family:'Inter',-apple-system,system-ui,sans-serif;
-                    z-index:100000;
-                    left:16px;right:16px;bottom:16px;top:90px;
-                    width:auto;height:auto;max-height:calc(100vh - 106px);
-                    max-width:calc(100vw - 32px);
-                `;
-            } else if (currentIsTablet) {
-                chatWindow.style.cssText = `
-                    position:fixed;display:flex;flex-direction:column;
-                    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
-                    font-family:'Inter',-apple-system,system-ui,sans-serif;
-                    z-index:100000;
-                    left:24px;right:24px;bottom:90px;top:70px;
-                    width:auto;height:auto;max-height:calc(100vh - 160px);
-                    max-width:calc(100vw - 48px);width:420px;height:520px;
-                `;
-            } else {
-                chatWindow.style.cssText = `
-                    position:fixed;display:flex;flex-direction:column;
-                    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
-                    font-family:'Inter',-apple-system,system-ui,sans-serif;
-                    z-index:100000;
-                    right:40px;top:55%;transform:translateY(-50%);
-                    width:440px;height:540px;
-                `;
-            }
-        }
-
-        // Initial positioning
-        updateChatPosition();
+        // RIGHT SIDE + VERTICALLY CENTERED FOR DESKTOP
+chatWindow.style.cssText = `
+    position:fixed;display:none;flex-direction:column;
+    background:white;border-radius:20px;box-shadow:0 25px 80px rgba(15,15,35,0.3);
+    font-family:'Inter',-apple-system,system-ui,sans-serif;
+    z-index:100000;
+    ${isMobile ? `
+        left:16px;right:16px;bottom:16px;top:90px;
+        width:auto;height:auto;max-height:calc(100vh - 106px);
+        max-width:calc(100vw - 32px);
+    ` : isTablet ? `
+        left:24px;right:24px;bottom:90px;top:70px;
+        width:auto;height:auto;max-height:calc(100vh - 160px);
+        max-width:calc(100vw - 48px);width:420px;height:520px;
+    ` : `
+        right:40px;top:55%;transform:translateY(-50%);
+        width:440px;height:540px;
+    `}
+    max-width:95vw;max-height:90vh;
+`;
 
         document.body.appendChild(chatBtn);
         document.body.appendChild(chatWindow);
@@ -230,13 +189,6 @@
                 btn.style.boxShadow = '0 4px 16px rgba(15,15,35,0.3)';
             };
         });
-
-        // ================= PULL-TO-REFRESH PREVENTION =================
-        document.addEventListener('touchmove', (e) => {
-            if (window.scrollY <= 0 && e.touches[0].clientY > 20) {
-                e.preventDefault();
-            }
-        }, { passive: false });
 
         // ================= ENHANCED STATUS BAR =================
         function getCurrentTime() {
@@ -355,75 +307,3 @@
                 else if (msg.includes('help') || msg.includes('menu')) {
                     conversationContext = null;
                     response = `I'm here to professionally assist you with:<br><br>
-                        • Technical skills & expertise<br>
-                        • Portfolio projects<br>
-                        • Development consultation<br>
-                        • Time & system information<br><br>
-                        How may I serve you today?`;
-                }
-                else if (msg.includes('time')) {
-                    response = `Current time: <strong>${getCurrentTime()}</strong>. 
-                        How else can I assist you professionally?`;
-                }
-                else if (msg.includes('weather')) {
-                    response = `Weather information is displayed in the status bar above. 
-                        What technical matter shall we discuss next?`;
-                }
-                else if (msg.includes('thank') || msg.includes('thanks')) {
-                    response = `You're most welcome. Professional service is my commitment. 
-                        Is there anything further I can assist you with?`;
-                }
-                else {
-                    conversationContext = null;
-                    response = `Thank you for your message. To provide the most accurate assistance, 
-                        could you please specify if you're interested in my <strong>technical skills</strong>, 
-                        <strong>portfolio projects</strong>, or require consultation on a specific development topic?`;
-                }
-
-                addMessage(response, false);
-                conversationHistory.push({ role: 'assistant', content: response });
-            }, 800 + Math.random() * 400); // Realistic typing delay
-        }
-
-        // ================= SEND MESSAGE =================
-        function sendMessage() {
-            const text = input.value.trim();
-            if (!text) return;
-
-            addMessage(text, true);
-            input.value = '';
-            input.style.height = 'auto';
-
-            getProfessionalAIResponse(text);
-        }
-
-        sendBtn.onclick = sendMessage;
-        input.onkeypress = (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        };
-
-        input.oninput = () => {
-            input.style.height = 'auto';
-            input.style.height = Math.min(input.scrollHeight, 120) + 'px';
-        };
-
-        // Welcome message sequence
-        setTimeout(() => {
-            addMessage("Technical Assistant online. How may I assist?", false, true);
-        }, 300);
-
-        // Resize handler
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => location.reload(), 250);
-        });
-
-    }, 200);
-})();
-
-
-
