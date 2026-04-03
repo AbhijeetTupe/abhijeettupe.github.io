@@ -29,15 +29,9 @@
 html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    min-height: 100svh;
+    height: 100%;
 }
 
-@media (max-width: 768px) {
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
-}
 body {
     /* 🔥 ADD THESE */
     overscroll-behavior: none !important;
