@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     
-    
 }
 
 :root {
@@ -30,9 +29,15 @@
 html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    height: 100%;
+    min-height: 100svh;
 }
 
+@media (max-width: 768px) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
 body {
     /* 🔥 ADD THESE */
     overscroll-behavior: none !important;
@@ -397,6 +402,7 @@ body {
     margin: 0 !important;
     white-space: nowrap !important;  /* 🔥 NO TEXT WRAP */
     flex-shrink: 0 !important;
+    
 }
 
 /* 🔥 MOBILE EMERGENCY FIX */
