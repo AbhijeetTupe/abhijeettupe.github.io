@@ -680,6 +680,8 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     box-sizing: border-box;   /* ✅ ADD THIS (MAIN FIX) */
+    
+    overflow: hidden;
 }
 .contact-form:hover {
     transform: translateY(-4px);
