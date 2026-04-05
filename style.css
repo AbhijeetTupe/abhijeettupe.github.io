@@ -977,3 +977,11 @@ body {
     opacity: 0.7;
     cursor: not-allowed;
 }
+
+.typing-container {
+    height: 60px !important; /* Fixed height */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
