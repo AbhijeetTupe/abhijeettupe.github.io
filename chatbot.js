@@ -307,3 +307,75 @@ chatWindow.style.cssText = `
                 else if (msg.includes('help') || msg.includes('menu')) {
                     conversationContext = null;
                     response = `I'm here to professionally assist you with:<br><br>
+                        • Technical skills & expertise<br>
+                        • Portfolio projects<br>
+                        • Development consultation<br>
+                        • Time & system information<br><br>
+                        How may I serve you today?`;
+                }
+                else if (msg.includes('time')) {
+                    response = `Current time: <strong>${getCurrentTime()}</strong>. 
+                        How else can I assist you professionally?`;
+                }
+                else if (msg.includes('weather')) {
+                    response = `Weather information is displayed in the status bar above. 
+                        What technical matter shall we discuss next?`;
+                }
+                else if (msg.includes('thank') || msg.includes('thanks')) {
+                    response = `You're most welcome. Professional service is my commitment. 
+                        Is there anything further I can assist you with?`;
+                }
+                else {
+                    conversationContext = null;
+                    response = `Thank you for your message. To provide the most accurate assistance, 
+                        could you please specify if you're interested in my <strong>technical skills</strong>, 
+                        <strong>portfolio projects</strong>, or require consultation on a specific development topic?`;
+                }
+
+                addMessage(response, false);
+                conversationHistory.push({ role: 'assistant', content: response });
+            }, 800 + Math.random() * 400); // Realistic typing delay
+        }
+
+        // ================= SEND MESSAGE =================
+        function sendMessage() {
+            const text = input.value.trim();
+            if (!text) return;
+
+            addMessage(text, true);
+            input.value = '';
+            input.style.height = 'auto';
+
+            getProfessionalAIResponse(text);
+        }
+
+        sendBtn.onclick = sendMessage;
+        input.onkeypress = (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        };
+
+        input.oninput = () => {
+            input.style.height = 'auto';
+            input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+        };
+
+        // Welcome message sequence
+        setTimeout(() => {
+            addMessage("Technical Assistant online. How may I assist?", false, true);
+        }, 300);
+
+        // Resize handler
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => location.reload(), 250);
+        });
+
+    }, 200);
+})();
+
+
+
