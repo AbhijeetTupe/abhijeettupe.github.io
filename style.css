@@ -669,16 +669,18 @@ body {
     background: var(--card-bg);
     backdrop-filter: blur(8px);
 
-    padding: 1.2rem;          /* reduced from 2rem */
-    border-radius: 14px;      /* slightly smaller */
-    max-width: 420px;         /* controls overall size */
-    margin: 0 auto;           /* center it */
+    padding: 1.2rem;
+    border-radius: 14px;
+    max-width: 420px;
+    width: 100%;              /* ✅ ADD THIS */
+    margin: 0 auto;
 
     border: 2px solid rgba(0, 0, 0, 0.5);
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
+    box-sizing: border-box;   /* ✅ ADD THIS (MAIN FIX) */
+}
 .contact-form:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
