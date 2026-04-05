@@ -368,14 +368,13 @@ chatWindow.style.cssText = `
         }, 300);
 
         // Resize handler
-        let resizeTimeout;
         window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => location.reload(), 250);
-        });
+    if (window.innerWidth > 768) {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => location.reload(), 250);
+    }
+});
+   
+});
 
-    }, 200);
-})();
-
-
-
+});
