@@ -24,16 +24,15 @@
 const text1 = "Hi, I'm ";
 const text2 = "ABHIJEET TUPE";
 
-
-
 let i = 0;
 let j = 0;
 const speed = 100;
-const delayBetweenLoops = 5000; // 5 seconds
+const delayBetweenLoops = 5000;
 
 function typeLine1() {
     if (i < text1.length) {
-        document.querySelector("h1").childNodes[0].nodeValue += text1.charAt(i);
+        let h1Text = document.querySelector("h1").childNodes[0].nodeValue || "";
+        document.querySelector("h1").childNodes[0].nodeValue = h1Text + text1.charAt(i);
         i++;
         setTimeout(typeLine1, speed);
     } else {
@@ -43,21 +42,20 @@ function typeLine1() {
 
 function typeLine2() {
     if (j < text2.length) {
-        document.getElementById("typewriter").innerHTML += text2.charAt(j);
+        let currentText = document.getElementById("typewriter").innerHTML;
+        document.getElementById("typewriter").innerHTML = currentText + text2.charAt(j);
         j++;
         setTimeout(typeLine2, speed);
     } else {
-        setTimeout(resetAnimation, delayBetweenLoops); // wait 32 sec
+        setTimeout(resetAnimation, delayBetweenLoops);
     }
 }
 
 function resetAnimation() {
     i = 0;
     j = 0;
-
     document.querySelector("h1").childNodes[0].nodeValue = "";
     document.getElementById("typewriter").innerHTML = "";
-
     typeLine1();
 }
 
@@ -94,13 +92,31 @@ window.onload = function () {
     </nav>
     
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                 <h1>Hi, I'm<br/> <span class="highlight" id="typewriter">Abhijeet Tupe</span></h1>
-                <div class="title">Web Developer</div>
-                <p class="tagline">I build modern, responsive, and user-friendly websites, turning ideas into interactive digital experiences focused on performance and usability.</p>
-                <div class="cta-buttonss">
+    <!-- Hero Section - Fixed Visibility -->
+<section id="home" class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <!-- Typing Area -->
+            <div style="height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: visible; margin-bottom: 0.4rem;">
+                <h1 style="margin: 0; line-height: 1.2; min-height: 120px;">
+                    Hi, I'm<br/>
+                    <span class="highlight" id="typewriter" style="min-height: 80px; display: inline-block;"></span>
+                </h1>
+            </div>
+            
+            <!-- Title - Full visibility -->
+            <div style="height: 32px; display: flex; align-items: center; margin-bottom: 0.5rem; flex-shrink: 0;">
+                <div class="title" style="width: 100%;">Web Developer</div>
+            </div>
+            
+            <!-- Tagline - Full visibility -->
+            <div style="height: 70px; display: flex; align-items: flex-start; margin-bottom: 1.3rem; flex-shrink: 0;">
+                <p class="tagline" style="width: 100%; margin: 0;">I build modern, responsive, and user-friendly websites, turning ideas into interactive digital experiences focused on performance and usability.</p>
+            </div>
+            
+            <!-- Buttons -->
+            <div style="height: 60px; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; flex-shrink: 0;">
+                <div class="cta-buttonss" style="width: 100%;">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-rocket"></i> Hire Me
                     </a>
@@ -110,7 +126,9 @@ window.onload = function () {
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+    
 
     <!-- About Section -->
     <section id="about" class="section">
