@@ -7,7 +7,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     
     <!-- OPTIMIZED CSS LOAD - Desktop first, mobile conditional -->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 768px)">
     
@@ -99,12 +100,12 @@ window.onload = function () {
                  <h1>Hi, I'm<br/> <span class="highlight" id="typewriter">Abhijeet Tupe</span></h1>
                 <div class="title">Web Developer</div>
                 <p class="tagline">I build modern, responsive, and user-friendly websites, turning ideas into interactive digital experiences focused on performance and usability.</p>
-                <div class="cta-buttons">
+                <div class="cta-buttonss">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-rocket"></i> Hire Me
                     </a>
                     <a href="#projects" class="btn btn-secondary">
-                         View Projects
+                         Projects
                     </a>
                 </div>
             </div>
@@ -119,9 +120,10 @@ window.onload = function () {
             </div>
             <div class="about-content">
                 <h2 class="section-title">About Me</h2>
+                <div class="about-para">
                 <p>I'm a passionate Web Developer with a background in B.Tech (Electronics & Telecommunication). I love transforming ideas into beautiful, functional websites that provide exceptional user experiences.</p>
                 <p>Currently focused on mastering modern web technologies and creating responsive, user-friendly applications. Always eager to learn new technologies and tackle challenging projects.</p>
-                <a href="resume.pdf" download="Abhijeet-Tupe-Resume.pdf" class="btn btn-primary resume-btn">
+                </div><a href="resume.pdf" download="Abhijeet-Tupe-Resume.pdf" class="btn btn-primary resume-btn">
                     <i class="fas fa-download"></i> Resume
                 </a>
             </div>
@@ -136,32 +138,32 @@ window.onload = function () {
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fab fa-html5"></i></div>
                     <h3>HTML5</h3>
-                    <p>Semantic markup</p>
+                    
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
                     <h3>CSS3</h3>
-                    <p>Advanced styling with Flexbox, Grid & Animations</p>
+                    
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fab fa-js-square"></i></div>
                     <h3>JavaScript</h3>
-                    <p>Interactive features and dynamic content</p>
+                    
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fab fa-react"></i></div>
                     <h3>React</h3>
-                    <p>Building modern, component-based UIs</p>
+                    
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
                     <h3>Git & GitHub</h3>
-                    <p>Version control and collaboration</p>
+                    
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>Responsive Design</h3>
-                    <p>Mobile-first approach for all devices</p>
+                    
                 </div>
             </div>
         </div>
@@ -169,17 +171,14 @@ window.onload = function () {
 
     <!-- Projects Section -->
     <section id="projects" class="section">
-        <h2 class="section-title">Projects</h2>
+        <h2 class="sectionn-title">Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-image"><i class="fas fa-laptop-code"></i></div>
                 <div class="project-content">
                     <h3>Portfolio Website</h3>
                     <p>A modern, responsive portfolio showcasing web development skills with dark/light mode toggle and smooth animations.</p>
-                    <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                         View Demo
-                    </a>
+                    <div class="ctaa-buttons">
                     <a href="#projects" class="btn btn-secondary">
                          View Code
                     </a>
@@ -191,10 +190,8 @@ window.onload = function () {
                 <div class="project-content">
                     <h3>Advanced Calculator</h3>
                     <p>Responsive calculator website with scientific functions, memory, history, dark/light mode, and smooth animations.</p>
-                    <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class=""></i> View Code
-                    </a>
+                    <div class="ctaa-buttons">
+                    
                     <a href="#projects" class="btn btn-secondary">
                          View Code
                     </a>
@@ -206,10 +203,8 @@ window.onload = function () {
                 <div class="project-content">
                     <h3>Bluetooth LED Cricket Scoreboard</h3>
                     <p>Final Year Project: Wireless LED scoreboard controlled via Bluetooth. Real-time cricket score updates using Arduino & custom app.</p>
-                    <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class=""></i> View Code
-                    </a>
+                    <div class="ctaa-buttons">
+                    
                     <a href="Publication.pdf" class="btn btn-secondary">
                          View File
                     </a>
@@ -230,7 +225,6 @@ window.onload = function () {
                         <div class="date">2020 - 2024</div>
                         <ul style="margin-top: 0.8rem; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.7;">
                             <li>Specialized in Satellite Communication Systems</li>
-                            <li>RF Engineering, Antenna Design & Wireless Communication</li>
                             <li>Final Year Project: Bluetooth LED Cricket Scoreboard</li>
                         </ul>
                     </div>
@@ -425,6 +419,123 @@ window.onload = function () {
             navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(reg => reg.unregister()));
         }
     </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+    const balls = document.querySelectorAll('.skill-card');
+    const container = document.querySelector('.skills-grid');
+
+    const speed = 1.5;
+    const size = 70;
+
+    let ballData = [];
+
+    function getBounds(rect) {
+        return {
+            minX: rect.width * 0.15,
+            maxX: rect.width * 0.85 - size,
+            minY: rect.height * 0.15,
+            maxY: rect.height * 0.85 - size
+        };
+    }
+
+    const rect = container.getBoundingClientRect();
+    const bounds = getBounds(rect);
+
+    balls.forEach(ball => {
+
+        // ✅ spawn inside CENTER 70% area
+        const x = bounds.minX + Math.random() * (bounds.maxX - bounds.minX);
+        const y = bounds.minY + Math.random() * (bounds.maxY - bounds.minY);
+
+        const dx = (Math.random() - 0.5) * speed;
+        const dy = (Math.random() - 0.5) * speed;
+
+        ball.style.left = x + 'px';
+        ball.style.top = y + 'px';
+
+        ballData.push({ el: ball, x, y, dx, dy });
+    });
+
+    function animate() {
+
+        const rect = container.getBoundingClientRect();
+        const bounds = getBounds(rect);
+
+        ballData.forEach((b, i) => {
+
+            b.x += b.dx;
+            b.y += b.dy;
+
+            // ✅ CUSTOM WALL COLLISION (CENTER 70%)
+            if (b.x <= bounds.minX) {
+                b.x = bounds.minX;
+                b.dx *= -1;
+            }
+
+            if (b.x >= bounds.maxX) {
+                b.x = bounds.maxX;
+                b.dx *= -1;
+            }
+
+            if (b.y <= bounds.minY) {
+                b.y = bounds.minY;
+                b.dy *= -1;
+            }
+
+            if (b.y >= bounds.maxY) {
+                b.y = bounds.maxY;
+                b.dy *= -1;
+            }
+
+            // 🔥 BALL COLLISION (NO STICKING)
+            ballData.forEach((other, j) => {
+
+                if (i !== j) {
+
+                    let dx = b.x - other.x;
+                    let dy = b.y - other.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < size) {
+
+                        let angle = Math.atan2(dy, dx);
+                        let overlap = size - distance;
+
+                        b.x += Math.cos(angle) * (overlap / 2);
+                        b.y += Math.sin(angle) * (overlap / 2);
+
+                        other.x -= Math.cos(angle) * (overlap / 2);
+                        other.y -= Math.sin(angle) * (overlap / 2);
+
+                        let tempDx = b.dx;
+                        let tempDy = b.dy;
+
+                        b.dx = other.dx;
+                        b.dy = other.dy;
+
+                        other.dx = tempDx;
+                        other.dy = tempDy;
+                    }
+                }
+
+            });
+
+            b.el.style.left = b.x + 'px';
+            b.el.style.top = b.y + 'px';
+
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+    
+});
+
+
+</script>
     
 </body>
 </html>
