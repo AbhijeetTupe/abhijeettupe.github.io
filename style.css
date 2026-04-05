@@ -703,8 +703,9 @@ body {
     color: var(--text-primary);
     font-size: 0.95rem;
     transition: all 0.25s ease;
-}
 
+    box-sizing: border-box;   /* ✅ THIS FIXES EVERYTHING */
+}
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: #999;
