@@ -357,14 +357,14 @@ body {
 }
 
 .hero .title { 
-    font-size: 0.88rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem; 
     opacity: 0.95; 
     font-weight: 600; 
 }
 
 .hero .tagline { 
-    font-size: 0.86rem;
+    font-size: 0.9rem;
     margin-bottom: 1.3rem; 
     opacity: 0.9; 
     line-height: 1.45; 
@@ -372,28 +372,14 @@ body {
 
 .cta-buttons {
     display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    width: 100% !important;              /* take full width */
+    max-width: 260px !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-    max-width: 100% !important;   /* 🔥 remove restriction */
-    margin: 1.5rem auto !important;
-    padding: 0 !important;
-}
-@media (max-width: 768px) {
-    .cta-buttons {
-        display: flex;
-        justify-content: center;   /* center horizontally */
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-        margin: 1.5rem auto;
-    }
-
-    .cta-buttons a {
-        text-align: center;
-        flex: 0 0 auto;   /* prevent stretching */
-    }
+    flex-wrap: nowrap !important;
+    margin: 1.5rem auto 0 auto !important;  /* 🔥 perfect center */
 }
 
 /* 🔥 FORCE BUTTONS SMALL & SIDE-BY-SIDE */
@@ -403,11 +389,49 @@ body {
     max-width: 130px !important;
     padding: 0.6rem 0.8rem !important;
     font-size: 0.8rem !important;
-    height: 38px !important;
+    height: 30px !important;
     margin: 0 !important;
     white-space: nowrap !important;  /* 🔥 NO TEXT WRAP */
     flex-shrink: 0 !important;
     
+}
+
+.cta-buttonss {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.4rem !important;              /* slightly smaller gap */
+    width: 100% !important;
+    max-width: 220px !important;         /* reduced for mobile */
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    margin: 1.2rem auto 0 auto !important;
+      
+    
+}
+
+/* ✅ BUTTON FIX */
+.cta-buttonss .btn {
+    flex: 1 !important;
+    min-width: 10px !important;
+    max-width: 100px !important;
+    padding: 0.4rem 0.8rem !important; /* Less vertical padding */
+    font-size: 0.8rem !important;
+    
+    /* 🔥 HEIGHT FIXES */
+    height: 28px !important;           /* Fixed height */
+    min-height: 28px !important;       /* Override min-height */
+    max-height: 28px !important;
+    line-height: 1.2 !important;       /* Tight line height */
+    margin: 0 !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    
+    /* Remove flex alignment issues */
+    align-self: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* 🔥 MOBILE EMERGENCY FIX */
@@ -421,6 +445,34 @@ body {
         padding: 0.55rem 0.7rem !important;
     }
 }
+
+.ctaa-buttons {
+    
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    width: 100% !important;              /* take full width */
+    max-width: 110px !important;
+    
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    margin: 1.5rem auto 0 auto !important;  /* 🔥 perfect center */
+}
+
+.ctaa-buttons .btn {
+    flex: 1 !important;           /* 🔥 EQUAL WIDTH */
+    
+    
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    
+    margin: 0 !important;
+    white-space: nowrap !important;  /* 🔥 NO TEXT WRAP */
+    flex-shrink: 0 !important;
+}
+
+
 /* SECTIONS - MOBILE SAFE */
 .section { 
     padding: 2.2rem 0.9rem; 
@@ -441,6 +493,18 @@ body {
     background-clip: text;
 }
 
+.sectionn-title {
+    margin-top: 1rem;
+    font-size: 1.5rem !important;
+    text-align: center;
+    margin-bottom: 1.3rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: float 3s ease-in-out infinite;
+}
+
 /* 🔥 ABOUT SECTION IMAGE - PERFECT CENTER (UPDATED) */
 .profile-img {
     width: 110px !important;
@@ -453,37 +517,155 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* REST OF YOUR STYLES (unchanged - all safe) */
-.skills-grid, .projects-grid {
+/* 🔥 MOBILE SKILLS IMPROVEMENT */
+@media (max-width: 768px) {
+
+    .skills-hero-section {
+        min-height: auto;
+        padding: 2rem 1rem;
+        background-size: cover;   /* better fit on mobile */
+    }
+
+    /* 🔥 TURN GRID INTO BALL CONTAINER */
+.skills-grid {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    display: block; /* remove grid */
+}
+
+        /* 🔥 MAKE SKILL CARDS INTO BALLS */
+.skill-card {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;              /* 🔥 circle */
+
+    padding: 0 !important;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.3rem;
-}
+    align-items: center;
+    justify-content: center;
 
-.skill-card, .project-card {
-    background: var(--card-bg);
-    padding: 1rem 0.95rem;
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(4px); /* 🔥 Reduced */
-    transition: all 0.3s ease;
+    font-size: 0.6rem;
     text-align: center;
-}
 
-.skill-card:hover, .project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 22px rgba(0,0,0,0.09);
-}
-
-.skill-icon {
-    font-size: 1.95rem !important;
     background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #fff;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: none;
+
+    transition: transform 0.2s ease;
+}    
+
+    /* 🔥 ZIG-ZAG EFFECT */
+    .skill-card:nth-child(odd) {
+        align-self: flex-start;
+    }
+
+    .skill-card:nth-child(even) {
+        align-self: flex-end;
+    }
+
+    /* 🔥 SMALLER ICON */
+    .skill-icon {
+    font-size: 1.4rem;
+    color: #ffffff !important;   /* 🔥 force visible */
+    margin-bottom: 2px;
+
+    -webkit-text-fill-color: unset !important;  /* 🔥 remove transparent */
+    background: none !important;                /* 🔥 remove gradient text */
+}
+
+    /* 🔥 TEXT SIZE */
+    .skill-card h3 {
+        font-size: 0.55rem;
+    margin: 0;
+    }
+}
+
+/* PROJECTS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+    perspective: 1000px;
+}
+
+/* Mobile View - Small cards */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+    
+    .project-card {
+        border-radius: 16px;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-8px);
+    }
+    
+    .project-image {
+        height: 140px;
+        font-size: 2.5rem;
+    }
+    
+    .project-content {
+        padding: 1rem;
+    }
+    
+    .project-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .project-content p {
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-image {
+    height: 140px;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: white;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
+}
+
+.project-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
 }
 
 .about-container {
@@ -494,7 +676,9 @@ body {
     text-align: center;
     justify-content: center;
 }
-
+.about-para{
+    font-size: 0.9rem;
+}
 .timeline-item {
     position: relative;
     margin-bottom: 1.6rem;
@@ -509,6 +693,7 @@ body {
 .timeline-item::after {
     display: none !important;
 }
+
 
 .contact-section { padding: 2.6rem 0.9rem; }
 
@@ -616,12 +801,41 @@ body {
 
 .resume-btn { 
     width: 110px !important; 
-    padding: 0.5rem 0.7rem !important; 
-    font-size: 0.75rem !important; 
-    height: 35px !important; 
+    height: 27px !important;
+
+    padding: 0 0.6rem !important;
+    font-size: 0.85rem !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 50px !important;   /* 🔥 makes it fully round (pill shape) */
+
+    line-height: 1 !important;
+    box-sizing: border-box !important;
 }
 
+.btn-primary {
+    background: rgba(255, 255, 255, 0.95);
+    color: #667eea;
+    box-shadow: 
+        0 8px 32px rgba(102, 126, 234, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    
+}
 
-
-
+/* Mobile - Smaller button */
+@media (max-width: 768px) {
+    .btn-primary {
+        box-shadow: 
+            0 6px 24px rgba(102, 126, 234, 0.25), /* Smaller shadow */
+            0 2px 12px rgba(0, 0, 0, 0.08);
+        border: 1.5px solid rgba(255, 255, 255, 0.3); /* Thinner border */
+        padding: 0.55rem 1.1rem !important; /* Smaller padding */
+        font-size: 0.8rem !important; /* Smaller text */
+        min-height: 34px !important; /* Compact height */
+    }
+}
 
