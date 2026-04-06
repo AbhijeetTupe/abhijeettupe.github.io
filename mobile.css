@@ -3,22 +3,7 @@
     margin: 0;
     padding: 0;
 }
-/* 🔥 ULTIMATE MOBILE SCROLL FIX - ADD THIS FIRST */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    scroll-snap-type: none !important;
-    -webkit-scroll-snap-type: none !important;
-}
 
-/* Prevent rubber band scrolling */
-html, body {
-    position: relative;
-    overscroll-behavior: none;
-}
 :root {
     --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #3730a3 100%);
     --text-primary: #111827;
@@ -44,41 +29,19 @@ html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     height: 100%;
-    /* 🔥 ADD THESE */
-    overscroll-behavior: none;
-    scroll-snap-type: none;
-    -webkit-scroll-snap-type: none;
 }
 
 body {
+    /* 🔥 ADD THESE */
     overscroll-behavior: none !important;
     -webkit-overflow-scrolling: touch !important;
     overscroll-behavior-y: none !important;
     scroll-behavior: smooth;
     position: relative;
+    /* 🔥 ALREADY HAVE */
     touch-action: manipulation;
-    /* 🔥 ADD THESE */
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-/* 🔥 MOBILE SCROLL SMOOTHNESS - ADD THIS */
-@media (max-width: 768px) {
-    html, body {
-        scroll-snap-type: none !important;
-        -webkit-scroll-snap-type: none !important;
-        overscroll-behavior: none !important;
-        scroll-behavior: smooth !important;
-    }
-    
-    * {
-        scroll-snap-align: none !important;
-        -webkit-scroll-snap-align: none !important;
-    }
-}
 /* MAIN NAVBAR - FIXED HEIGHT, NO SHRINK */
 /* COMPACT NAVBAR - REDUCED HEIGHT */
 .navbar {
@@ -349,18 +312,15 @@ body.scrolled .navbar {
 .navbar[style*="padding"],
 .navbar[style*="height"],
 .navbar[style*="transform"] {
-    padding: 0.5rem 0 !important;
+    padding: 0.5rem 0 !important; /* COMPACT */
     height: 52px !important;
     min-height: 52px !important;
-    /* 🔥 CHANGE TO */
     transition: none !important;
     transform: none !important;
     display: flex !important;
-    align-items: center !important;
-    /* 🔥 ADD */
-    will-change: auto !important;
-    backface-visibility: hidden !important;
+    align-items: center !important; /* VERTICAL CENTER */
 }
+
 /* UNIVERSAL NO-EFFECTS */
 .navbar *,
 .navbar *::before,
@@ -382,17 +342,13 @@ body.scrolled .navbar {
     padding: 3.5rem 0.9rem 1.2rem;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('bg.jpg');
     background-size: cover !important;
-    background-position: center 15% !important;
+    background-position: center 15% !important; /* ↑ Crops MORE from bottom */
     background-attachment: scroll !important;
     background-repeat: no-repeat !important;
-    /* 🔥 REPLACE THESE */
-    transform: none !important;  /* Remove translateZ */
-    will-change: auto !important; /* Reset */
-    contain: none !important;    /* Remove contain */
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+    contain: layout style paint !important;
     position: relative;
-    /* 🔥 ADD THESE */
-    overflow: hidden;
-    backface-visibility: hidden;
 }
 
 .hero-content {
