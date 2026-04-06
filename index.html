@@ -17,8 +17,8 @@
     
     <!-- EmailJS - Load async -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-    <script src="./chatbot.js" defer></script>
-    
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
 </head>
 <script>
 const text1 = "Hi, I'm ";
@@ -554,7 +554,84 @@ window.onload = function () {
 
 
 </script>
+    <script>
+// 🔥 BULLETPROOF SMOOTH SCROLLING
+document.addEventListener('DOMContentLoaded', function() {
     
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinksContainer = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinksContainer) {
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            navLinksContainer.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+    
+    // 🔥 SMOOTH SCROLL FOR ALL LINKS
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                // Close mobile menu
+                if (window.innerWidth <= 768) {
+                    navLinksContainer.classList.remove('active');
+                    if (hamburger) hamburger.classList.remove('active');
+                }
+                
+                // Smooth scroll with offset
+                const navbarHeight = 70;
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update active class
+                document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+    
+    // Active link on scroll
+    let ticking = false;
+    function updateActiveLink() {
+        if (ticking) return;
+        ticking = true;
+        
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('active');
+            if ('#' + current === link.getAttribute('href')) {
+                link.classList.add('active');
+            }
+        });
+        
+        requestAnimationFrame(() => ticking = false);
+    }
+    
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink(); // Initial call
+});
+</script>
 </body>
 </html>
 
