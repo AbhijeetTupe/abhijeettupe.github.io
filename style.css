@@ -38,7 +38,27 @@
     padding: 0;
     
 }
+/* 🔥 FORCE SMOOTH SCROLLING - ADD THIS AT TOP (after html rule) */
+html {
+    scroll-behavior: smooth !important;
+    scroll-padding-top: 70px !important; /* Navbar height */
+}
 
+
+/* 🔥 ALL NAV LINKS - FORCE SMOOTH SCROLL */
+.nav-links a[href^="#"] {
+    scroll-behavior: smooth !important;
+    scroll-margin-top: 70px !important;
+    scroll-padding-top: 70px !important;
+}
+
+/* 🔥 MOBILE LINKS TOO */
+@media (max-width: 768px) {
+    .nav-links.active a[href^="#"] {
+        scroll-behavior: smooth !important;
+        scroll-margin-top: 70px !important;
+    }
+}
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
@@ -47,6 +67,7 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     transition: all 0.3s ease;
+    scroll-padding-top: 70px !important;
 }
 
 /* PROFESSIONAL NAVBAR */
@@ -97,7 +118,7 @@ body.scrolled .navbar {
     height: 100% !important;
 }
 
-/* DESKTOP ONLY - HIGHER POSITION */
+/* 🔥 DESKTOP + MOBILE - SMOOTH SCROLLING NAVBAR */
 @media (min-width: 769px) {
     .logo,
     .nav-links,
@@ -109,7 +130,7 @@ body.scrolled .navbar {
         justify-content: center !important;
         line-height: 1 !important;
         position: relative;
-        top: -4px !important; /* DESKTOP HIGHER */
+        top: -4px !important;
     }
     
     .logo {
@@ -124,6 +145,7 @@ body.scrolled .navbar {
         cursor: pointer;
         flex-shrink: 0;
         margin-top: -2px;
+        pointer-events: none; /* Logo doesn't scroll */
     }
     
     .logo:hover {
@@ -153,6 +175,8 @@ body.scrolled .navbar {
         display: flex;
         align-items: flex-start;
         line-height: 1.1;
+        /* 🔥 SMOOTH SCROLL */
+        scroll-margin-top: 70px; /* Navbar height + padding */
     }
     
     .nav-links a::before {
@@ -204,6 +228,56 @@ body.scrolled .navbar {
     }
 }
 
+/* 🔥 MOBILE NAVBAR LINKS */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px; /* Navbar height */
+        left: 16px;
+        right: 16px;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1.25rem;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        z-index: 999;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(20px);
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--text-primary);
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 1rem 1.25rem;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: block;
+        /* 🔥 MOBILE SMOOTH SCROLL */
+        scroll-margin-top: 70px;
+        letter-spacing: 0.5px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(255,255,255,0.15);
+        color: #4f46e5;
+        transform: translateX(8px);
+    }
+}
 /* THEME TOGGLE - ALWAYS CENTERED (BOTH DESKTOP/MOBILE) */
 .theme-toggle {
     background: rgba(255, 255, 255, 0.1);
