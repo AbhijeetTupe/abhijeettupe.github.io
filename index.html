@@ -331,28 +331,42 @@ window.onload = function () {
 </footer>
 
 
-        <!-- Chatbot Widget -->
-<div id="portfolio-chatbot" class="chatbot-container">
-    <div class="chatbot-toggle">
+        <div id="portfolio-chatbot" class="chatbot-container">
+    <div class="chatbot-toggle" id="chat-toggle-btn">
         <span>💬</span>
     </div>
-    <div class="chatbot-window">
+    <div class="chatbot-window" id="chatbot-window">
         <div class="chat-header">
-            <span>Hi! 👋 Need help?</span>
-            <button class="close-chat">×</button>
+            <div class="header-left">
+                <span>Hi! 👋 Need help?</span>
+            </div>
+            <div class="header-buttons">
+                <button class="chat-btn new-chat" id="new-chat-btn">➕ New</button>
+                <button class="chat-btn history-btn" id="history-btn">📚</button>
+            </div>
+            <button class="close-chat" id="close-chat-btn">×</button>
         </div>
-        <div class="chat-messages" id="chat-messages"></div>
+        
+        <div class="history-container" id="history-container" style="display: none;">
+            <div class="history-header">
+                <h3>💾 Chat History</h3>
+                <button class="clear-all-history" id="clear-all-history">🗑️ Clear All</button>
+            </div>
+            <div class="history-list" id="history-list"></div>
+        </div>
+        
+        <div class="chat-messages-container" id="chat-messages-container">
+            <div class="chat-messages" id="chat-messages"></div>
+        </div>
+        
         <div class="chat-input-box">
             <input type="text" id="chat-input" placeholder="Ask about my work...">
             <button id="send-chat" class="send-btn-icon">
-                 <i class="fas fa-arrow-up"></i>
-                </button>
+                <i class="fas fa-arrow-up"></i>
+            </button>
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/gh/your-repo/chatbot-script.js"></script>
-
 
 
     <!--  COMPLETE SCRIPT with MOBILE MENU + EmailJS -->
