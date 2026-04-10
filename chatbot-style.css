@@ -146,7 +146,7 @@
 
 #chat-input {
     flex: 1 !important;
-    padding: 14px 18px !important;
+    padding: 16px 20px !important;
     border: 2px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: 22px !important;
     outline: none !important;
