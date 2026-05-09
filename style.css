@@ -117,7 +117,7 @@ body.scrolled .navbar {
     .nav-links {
         display: flex;
         list-style: none;
-        gap: 2.5rem;
+        gap: 1.6rem;
         align-items: center;
         margin: 0;
         padding: 0;
@@ -791,6 +791,8 @@ body.scrolled .navbar {
     
 }
 
+
+
 .contact-form {
     background: var(--card-bg);
     backdrop-filter: blur(8px);
@@ -814,12 +816,14 @@ body.scrolled .navbar {
     box-shadow: var(--shadow-hover);
 }
 
+   
 .form-group {
     margin-bottom: 1.2rem;
     padding: 0rem;
     backdrop-filter: blur(6px);
     transition: all 0.3s ease;
 }
+
 
 .form-group input,
 .form-group textarea {
@@ -994,6 +998,7 @@ body.scrolled .navbar {
     background: rgba(255, 255, 255, 0.9);
     color: #667eea;
     border: 2px solid rgba(102, 126, 234, 0.3);
+    margin-left: 15px;
 }
 
 [data-theme="dark"] .btn-secondary {
@@ -1043,4 +1048,36 @@ body.scrolled .navbar {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}      
+
+.close-chat {
+    font-size: 12px;        /* smaller icon */
+    padding: 4px 8px;       /* reduce button size */
+    margin-left: 10px;      /* space before button */
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
+
+.close-chat:hover {
+    opacity: 0.7;
+}
+
+.chatbot-toggle {
+    width: 50px !important;
+    height: 50px !important;
+    padding: 0 !important;        /* remove extra space */
+    font-size: 16px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 70%;
+    line-height: 1;               /* prevent text stretching */
+}
+
+
+
+
+
