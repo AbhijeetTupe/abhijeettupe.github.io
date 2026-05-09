@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Save to localStorage
         localStorage.setItem('theme', newTheme);
     });
-});
+});  
 
 // Navbar Scroll Effect
 window.addEventListener('scroll', () => {
@@ -113,7 +113,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
     }, 2000);
-});
+}); 
 
 // Resume download (placeholder)
 document.querySelectorAll('a[href="#"]').forEach(link => {
